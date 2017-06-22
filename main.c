@@ -2,44 +2,49 @@
 #include "listaHeader.h"
 #include "pilhaHeader.h"
 #include "menuHeader.h"
-#include "main_structure.h"
+//#include "main_structure.h"
 
 /*** INCOMPLETA! SOMENTE PARA TESTES ***/
 
-/*Ediçao de Teste Stefany Lacroux*/
-
 int main(void)
 {
-	int opt;
+	int opt, opt_submenu;
 
-	/* Lista que armazenara os ponteiros para lista, fila e pilha */
-	MainStruct *super_lst;
-	super_lst = (*MainStruct) malloc (sizeof(MainStruct);
+	/* Menu de Opções */
+	opt = displayMenu();
+	while (opt < 1 || opt > 3)
+    	{
+		printf("\nOpcao inexistente!\nTente Novamente...\n\n");
+		opt = displayMenu();
+	}
+	/* SubMenu de Opções */
+    	opt_submenu = displaySubmenu();
+    	while (opt < 1 || opt > 3)
+    	{
+		printf("\nOpcao inexistente!\nTente Novamente...\n\n");
+		opt_submenu = displaySubmenu();
+    	}
 	
-	displayMenu(); /* Exibe o menu de opcoes */
-
-	scanf("%d", &opt); /* Realiza leitura opcao selecionado no displayMenu() */
-	
-	while (opt != -1) {
-
-		switch(opt) {
-	
-			case 1: /* Cria uma lista */
-				Lista *lst_ptr = lst_cria();
-				system("cls||clear");
-				displaySubmenu(); /* Chama Submenu, como opcoes para trabalhar a estrutura */
+	switch(opt) {
+		/* Opção LISTA */
+		case 1: /* Cria uma lista */
+			Lista *lst_ptr = lst_cria();
+			system("cls||clear");
+			options1 (lst_ptr, opt_submenu);
 			break;
-
-			case 2:
-				Fila *fila_ptr = criar();
-				system("cls||clear");
-				displaySubmenu();
+			
+		/* Opção FILA */
+		case 2:
+			Fila *fila_ptr = criar();
+			system("cls||clear");
+			options2 (fila_ptr,opt_submenu);
 			break;
-
-			case 3:
-				struct node *pilha_ptr = cria();
-				system("cls||clear");
-				displaySubmenu();
+		
+		/* Opção PILHA */
+		case 3:
+			Pilha *pilha_ptr = cria();
+			system("cls||clear");
+			options3 (pilha_ptr, opt_submenu);
 			break;
 
 			default:
